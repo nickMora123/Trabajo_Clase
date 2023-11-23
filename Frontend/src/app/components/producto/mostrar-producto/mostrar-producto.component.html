@@ -1,0 +1,59 @@
+<div class="flex align-items-center justify-content-end bg-yellow-200">
+    <a 
+      pButton 
+      pRipple
+      label="Crear producto" 
+      icon="pi pi-user-plus"
+      class="bg-yellow-300"
+      [routerLink]="['/addproductos']">
+    </a>
+</div>
+<div>
+    <p-toast></p-toast>
+</div>
+
+<p-table [value]="producto">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>marca</th>
+            <th>Precio</th>
+            <th>stockMin</th>
+            <th>cantidad</th>
+            <!-- <th>estado</th> -->
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-producto>
+        <tr>
+            <td>{{producto.id}}</td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.marca}}</td>
+            <td>{{producto.precio}}</td>
+            <td>{{producto.stockMin}}</td>
+            <td>{{producto.cantidad}}</td>
+            <!-- <td>{{producto.estado}}</td> -->
+            
+            <td>
+                <a 
+                pButton 
+                pRipple
+                icon="pi pi-user-edit"
+                class="bg-green-600  mr-1"
+                [routerLink]="['/Producto/edit', producto.id]">
+                </a>
+
+                <button 
+                type="button"
+                 pButton 
+                 pRipple
+                icon="pi pi-delete-left"
+                class="bg-red-600  mr-1"
+                 (click)="eliminar(producto.id)">
+                </button>
+            </td>
+
+        </tr>
+    </ng-template>
+</p-table>

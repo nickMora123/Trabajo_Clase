@@ -1,0 +1,55 @@
+<div class="flex align-items-center justify-content-end bg-yellow-200">
+    <a 
+      pButton 
+      pRipple
+      label="Crear Venta" 
+      icon="pi pi-user-plus"
+      class="bg-yellow-400"
+      [routerLink]="['/addventas']">
+    </a>
+
+
+</div>
+<p-table [value]="venta">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Subtotal</th>
+            <th>Impuestos</th>
+            <th>Descuentos</th>
+            <th>Total</th>
+            <th>Estado</th>
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-venta>
+        <tr>
+            <td>{{venta.id}}</td>
+            <td>{{venta.fecha}}</td>
+            <td>{{venta.subtotal}}</td>
+            <td>{{venta.impuestos}}</td>
+            <td>{{venta.descuentos}}</td>
+            <td>{{venta.total}}</td>
+            <td>{{venta.estado}}</td>
+            <td>
+                <a 
+                pButton 
+                pRipple
+                icon="pi pi-user-edit"
+                class="bg-green-600  mr-1"
+                [routerLink]="['/Venta/edit', venta.id]">
+                </a>
+
+                <button 
+                type="button"
+                 pButton 
+                 pRipple
+                icon="pi pi-delete-left"
+                class="bg-red-600  mr-1"
+                 (click)="eliminar(venta.id)">
+                </button>
+            </td>
+            </tr>
+    </ng-template>
+</p-table>
